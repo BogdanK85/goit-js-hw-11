@@ -27,7 +27,7 @@ a {
 
 .search-form button {
     color: rgb(225, 234, 238);
-    background-color: rgb(200, 55, 200);
+    background-color: rgb(200, 77, 200, 0.9);
     font-size: 15px;
     border-radius: 5px;
     margin-left: 25px;
@@ -92,7 +92,7 @@ a {
     font-size: 20px;
     cursor: pointer;
     border-radius: 5px;
-    background-color: rgb(200, 77, 200);
+    background-color: rgb(200, 77, 200, 0.9);
     color: rgb(233, 228, 255);
 }
 .load-more:hover {
