@@ -26,8 +26,8 @@ a {
 }
 
 .search-form button {
-    color: rgb(49, 4, 248);
-    background-color: violet;
+    color: rgb(225, 234, 238);
+    background-color: rgb(235, 91, 235);
     font-size: 15px;
     border-radius: 5px;
     margin-left: 25px;
