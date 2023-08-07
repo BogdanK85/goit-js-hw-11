@@ -81,9 +81,9 @@ a {
     gap: 3px;
     
 }
-/* .load-more.is-hidden {
+.load-more.is-hidden {
     display: none;
-} */
+}
 .load-more {
     display: block;
     width: 200px;
