@@ -1,0 +1,101 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.search-form {
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px 0;
+    background-color: #d1fcbd;
+}
+
+.search-form input {
+    width: 300px;
+    height: 35px;
+    padding: 0px 70px 0px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    border-color: coral;
+    outline: none;
+}
+
+.search-form button {
+    color: rgb(49, 4, 248);
+    background-color: violet;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-left: 25px;
+    cursor: pointer;
+    height: 35px;
+    width: 70px;
+}
+
+.search-form button:hover,
+.search-form button:focus {
+    color: yellow;
+    background-color: #f10a0a;
+}
+
+.gallery-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 80px 20px 25px 20px;
+    gap: 50px 25px;
+}
+.lightbox-current {
+    width: 30%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+.photo-card {
+    overflow: hidden;
+}
+.photo-card img {
+    width: 100%;
+    height: 300px;
+    transition: transform 500ms;
+}
+.photo-card img:hover {
+    transform: scale(1.03);
+}
+
+.info {
+    display: flex;
+    padding: 10px 5px;
+    gap: 10px;
+    justify-content: space-around;
+}
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    gap: 3px;
+    
+}
+/* .load-more.is-hidden {
+    display: none;
+} */
+.load-more {
+    display: block;
+    width: 200px;
+    height: 60px;
+    margin: 35px auto;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: violet;
+    color: rgb(49, 4, 248);
+}
+.load-more:hover {
+    color: yellow;
+    background-color: #f10a0a;
+}
