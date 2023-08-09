@@ -17,6 +17,7 @@ let totalPages = null;
 inputElem.addEventListener('focus', onInputFocus)
 loadMoreBtn.classList.add('is-hidden');
 searchBtn.disabled = true;
+const lightbox = initializeLightbox();
 
 function onInputFocus() {
     formElem.addEventListener('submit', onSearchSubmit);
@@ -36,7 +37,7 @@ async function onSearchSubmit(event) {
     if (event.type === 'submit') {
         loadMoreBtn.classList.add('is-hidden')
         try {
-            const getImgForPhotos = await getImages(query);
+            const getImgForPhotos = await getImages(query, currentPage);
             const { hits, totalHits } = getImgForPhotos;
 
             if (!hits.length) {
@@ -48,7 +49,7 @@ async function onSearchSubmit(event) {
 
             galleryList.insertAdjacentHTML('beforeend', createPictureMarkup(hits));
 
-            initializeLightbox();
+            lightbox.refresh();
             
             totalPages = Math.ceil(totalHits / imgPerPage);
 
@@ -71,12 +72,13 @@ async function onLoadMoreBtnClick() {
 
         galleryList.insertAdjacentHTML('beforeend', createPictureMarkup(hits));
 
-        initializeLightbox();
-        //pictureGalleryScroll();
+        lightbox.refresh();
+        smoothGalleryScroll();
 
-        if (currentPage === totalPages) {
+        if (currentPage === totalPages && hits.length < 40) {
             Notify.info("We're sorry, but you've reached the end of search results.");
-            loadMoreBtn.classList.add('id-hidden');
+            //loadMoreBtn.classList.add('id-hidden');
+            loadMoreBtn.classList.toggle('is-hidden', hits.length < 40);
         }
     }
     catch (error) {
@@ -109,13 +111,19 @@ function createPictureMarkup(hits) {
 }
 
 function initializeLightbox() {
-    const lightbox = new SimpleLightbox('.gallery-list a', {
+    return new SimpleLightbox('.gallery-list a', {
         captionsData: 'alt',
         captionDelay: 250,
     });
-    lightbox.refresh();
 }
 
-// function pictureGalleryScroll() {
-//     const 
-// }
+function smoothGalleryScroll() {
+    const { height: cardHeight } = document
+        .querySelector(".gallery-list")
+        .firstElementChild.getBoundingClientRect();
+
+    window.scrollBy({
+        top: cardHeight * 2,
+        behavior: "smooth",
+});
+}
